@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package usuarios.modelos;
+package productos.modelos;
 
 /**
  *
  * @author estudiante
  */
-public class Productos {
+public class Producto {
     //Atributos
     public String nombre;
     public String estado;
@@ -17,11 +17,8 @@ public class Productos {
     private float precio;
     private String categoria;
     
-    //cod
-    
     //Constructor
-
-    public Productos(String nombre, String estado, int codigo, String descripcion, float precio, String categoria) {
+    public Producto(String nombre, String estado, int codigo, String descripcion, float precio, String categoria) {
         this.nombre = nombre;
         this.estado = estado;
         this.codigo = codigo;

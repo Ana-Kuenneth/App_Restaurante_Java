@@ -8,13 +8,12 @@ package usuarios.modelos;
  *
  * @author estudiante
  */
-public class Encargados extends Usuario{
+public class Cliente extends Usuario{
     //Atributos heredados
     
     //Constructor
-    public Encargados(String correo, String clave, String apellido, String nombre) {
+    public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
-
     
 }
