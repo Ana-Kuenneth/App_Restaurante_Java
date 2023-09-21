@@ -38,9 +38,9 @@ public class ControladorPrincipal
         Encargado encargado2 = new Encargado("en1@gmail.com","en1","en1","en2");
         Encargado encargado3 = new Encargado("en1@gmail.com","en1","en1","en3");
 
-        Producto producto1 = new Producto("p1","Disponible",123,"p1",1.2f,"Postre");
-        Producto producto2 = new Producto("p2","No disponible",123,"p2",1.2f,"Postre");
-        Producto producto3 = new Producto("p3","Disponible",123,"p3",1.2f,"Postre");
+        Producto producto1 = new Producto(123,"Postre","p1","Disponible",1.2f);
+        Producto producto2 = new Producto(123,"Postre","p2","Disponible",1.2f);
+        Producto producto3 = new Producto(123,"Postre","p2","Disponible",1.2f);
         
         //Agregado de elementos
         clientes.add(cliente1);
@@ -76,10 +76,9 @@ public class ControladorPrincipal
         }
         
         for (Producto unProducto : productos) {
-            System.out.println("*** PRODUCTO: " + unProducto.verNombre() + " ***"); 
-            System.out.println("Codigo: " + unProducto.verCodigo());
-            System.out.println("Categoria: " + unProducto.verCategoria());
+            System.out.println("*** PRODUCTO: " + unProducto.verCodigo() + " ***"); 
             System.out.println("Descripcion: "+unProducto.verDescripcion());
+            System.out.println("Categoria: " + unProducto.verCategoria());
             System.out.println("Estado: " + unProducto.verEstado());
             System.out.println("Precio: $"+unProducto.verPrecio());
         }

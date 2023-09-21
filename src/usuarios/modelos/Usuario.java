@@ -22,7 +22,7 @@ public class Usuario {
         this.apellido = apellido;
         this.nombre = nombre;
     }
-    //Metodos
+    
     //Metodos GET/SET
     public String verNombre() {
         return nombre;
@@ -56,5 +56,8 @@ public class Usuario {
         this.apellido = apellido;
     }
     
-    
+    //Metodos
+    public void mostrar(){
+        
+    }
 }
