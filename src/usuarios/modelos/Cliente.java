@@ -16,4 +16,10 @@ public class Cliente extends Usuario{
         super(correo, clave, apellido, nombre);
     }
     
+    //Metodos
+    @Override
+    public void mostrar(){
+        System.out.println("*** CLIENTE: " + this.verNombre() + " " + this.verApellido()+" ***"); 
+        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave());
+    }
 }

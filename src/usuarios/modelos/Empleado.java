@@ -16,4 +16,10 @@ public class Empleado extends Usuario{
         super(correo, clave, apellido, nombre);
     }
     
+    //Métodos
+    @Override
+    public void mostrar(){
+        System.out.println("*** EMPLEADO: " + this.verNombre() + " " + this.verApellido()+" ***"); 
+        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave());
+    }
 }

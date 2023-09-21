@@ -61,27 +61,22 @@ public class ControladorPrincipal
         
         //Recorrer los ArrayLists y mostrarlos
         for (Cliente unCliente : clientes) {
-            System.out.println("*** CLIENTE: " + unCliente.verNombre() + " " + unCliente.verApellido()+" ***"); 
-            System.out.println("Correo electronico: " + unCliente.verCorreo()+". Clave: "+ unCliente.verClave());
+            unCliente.mostrar();
         }
         
         for (Empleado unEmpleado : empleados) {
-            System.out.println("*** EMPLEADO: " + unEmpleado.verNombre() + " " + unEmpleado.verApellido()+" ***"); 
-            System.out.println("Correo electronico: " + unEmpleado.verCorreo()+". Clave: "+ unEmpleado.verClave());
+            unEmpleado.mostrar();
         }
         
         for (Encargado unEncargado : encargados) {
-            System.out.println("*** ENCARGADO: " + unEncargado.verNombre() + " " + unEncargado.verApellido()+" ***"); 
-            System.out.println("Correo electronico: " + unEncargado.verCorreo()+". Clave: "+ unEncargado.verClave());
+            unEncargado.mostrar();
         }
         
         for (Producto unProducto : productos) {
-            System.out.println("*** PRODUCTO: " + unProducto.verCodigo() + " ***"); 
-            System.out.println("Descripcion: "+unProducto.verDescripcion());
-            System.out.println("Categoria: " + unProducto.verCategoria());
-            System.out.println("Estado: " + unProducto.verEstado());
-            System.out.println("Precio: $"+unProducto.verPrecio());
+            unProducto.mostrar();
         }
+        
+        System.out.println(producto1);
         
     }
 }

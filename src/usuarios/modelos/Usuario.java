@@ -58,6 +58,6 @@ public class Usuario {
     
     //Metodos
     public void mostrar(){
-        
+        //mejorar para que en las subclases no se repita codigo
     }
 }

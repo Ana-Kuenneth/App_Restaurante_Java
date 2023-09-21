@@ -71,7 +71,19 @@ public class Producto {
     
     //Metodos
     public void mostrar(){
-        
+        System.out.println("*** PRODUCTO: " + this.verCodigo() + " ***"); 
+        System.out.println("Descripcion: "+ this.verDescripcion());
+        System.out.println("Categoria: " + this.verCategoria());
+        System.out.println("Estado: " + this.verEstado());
+        System.out.println("Precio: $"+ this.verPrecio());
     }
+
+    @Override
+    public String toString() {
+        return "PRODUCTO{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", categoria=" + categoria + ", estado=" + estado + ", precio=" + precio + '}';
+    }
+
+    
+    
     
 }

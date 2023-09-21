@@ -15,6 +15,12 @@ public class Encargado extends Usuario{
     public Encargado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
-
+    
+    //Métodos
+    @Override
+    public void mostrar(){
+        System.out.println("*** ENCARGADO: " + this.verNombre() + " " + this.verApellido()+" ***"); 
+        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave());
+    }
     
 }
