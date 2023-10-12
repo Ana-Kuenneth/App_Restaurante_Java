@@ -5,21 +5,37 @@
 package usuarios.modelos;
 
 /**
- *
- * @author estudiante
+ * Clase destinada a manejar los empleados del restaurante, que pueden ingresar y revisar los pedidos de comida
+ * @author Ana Kuenneth
  */
 public class Empleado extends Usuario{
-    //Atributos heredados
+    /**
+     * Atributos heredados
+     * @param correo Correo electrónico del empleado para ingresar al sistema
+     * @param clave Contraseña del empleado para ingresar al sistema
+     * @param apellido Apellido del empleado
+     * @param nombre Nombre del empleado
+     */
     
-    //Constructor
+    /**
+     * Constructor
+     * Crea una instancia del tipo Empleado
+     * @param correo Correo electrónico del empleado
+     * @param clave Contraseña del empleado
+     * @param apellido Apellido del empleado
+     * @param nombre Nombre del empleado
+     */
     public Empleado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
     
     //Métodos
     @Override
+    /**
+     * Muestra la información del empleado
+     */
     public void mostrar(){
-        System.out.println("*** EMPLEADO: " + this.verNombre() + " " + this.verApellido()+" ***"); 
-        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave());
+        System.out.print("*** EMPLEADO: "); 
+        super.mostrar();
     }
 }

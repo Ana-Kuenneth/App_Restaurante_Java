@@ -11,20 +11,30 @@ import usuarios.modelos.Encargado;
 import productos.modelos.Producto;
 
 /**
- *
- * @author estudiante
+ * Ejecuta la aplicación de registro de pedidos y ventas para un restaurante.
+ * 
+ * @author Ana Kuenneth
  */
 public class ControladorPrincipal
 {
-    
+    /**
+     * Metodo principal o main del proyecto.
+     * @param args 
+     */
     public static void main (String[] args)
     {
+        /**
+         * Instancia de vectores dinamicos para cada tipo de objetos
+         */
         //ArrayLists
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Empleado> empleados = new ArrayList<>();
         ArrayList<Encargado> encargados = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
         
+        /**
+         * Instancia objetos de las clases Clientes, Empleado, Encargado y Producto
+         */
         //Instanciar las clases
         Cliente cliente1 = new Cliente("c1@gmail.com","c1","c1","c1");
         Cliente cliente2 = new Cliente("c2@gmail.com","c2","c2","c2");
@@ -38,10 +48,13 @@ public class ControladorPrincipal
         Encargado encargado2 = new Encargado("en1@gmail.com","en1","en1","en2");
         Encargado encargado3 = new Encargado("en1@gmail.com","en1","en1","en3");
 
-        Producto producto1 = new Producto(123,"Postre","p1","Disponible",1.2f);
-        Producto producto2 = new Producto(123,"Postre","p2","Disponible",1.2f);
-        Producto producto3 = new Producto(123,"Postre","p2","Disponible",1.2f);
+        Producto producto1 = new Producto(1,"Postre","p1","Disponible",1.2f);
+        Producto producto2 = new Producto(2,"Postre","p2","Disponible",1.2f);
+        Producto producto3 = new Producto(3,"Postre","p2","Disponible",1.2f);
         
+        /**
+         * Se agregan las instancias creadas en cada vector dinámico creado
+         */
         //Agregado de elementos
         clientes.add(cliente1);
         clientes.add(cliente2);
@@ -59,6 +72,9 @@ public class ControladorPrincipal
         productos.add(producto2);
         productos.add(producto3);
         
+        /**
+         * Secuencias de iteración para recorrer los vectores y mostrar cada uno de sus elementos
+         */
         //Recorrer los ArrayLists y mostrarlos
         for (Cliente unCliente : clientes) {
             unCliente.mostrar();
@@ -76,6 +92,9 @@ public class ControladorPrincipal
             unProducto.mostrar();
         }
         
+        /**
+         * Se prueba el método toString de la clase Producto
+         */
         System.out.println(producto1);
         
     }

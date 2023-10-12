@@ -5,22 +5,41 @@
 package usuarios.modelos;
 
 /**
- *
- * @author estudiante
+ * Clase destinada a manejar los encargados del restaurante, que pueden ingresar y revisar los pedidos de comida
+ * @author Ana Kuenneth
  */
 public class Encargado extends Usuario{
-    //Atributos heredados
+    /**
+     * Atributos heredados
+     * @param correo Correo electrónico del encargado para ingresar al sistema
+     * @param clave Contraseña del encargado para ingresar al sistema
+     * @param apellido Apellido del encargado
+     * @param nombre Nombre del encargado
+     */
     
-    //Constructor
+    /**
+     * Constructor
+     * Crea una instancia del tipo Encargado
+     * @param correo Correo electrónico del encargado
+     * @param clave Contraseña del encargado
+     * @param apellido Apellido del encargado
+     * @param nombre Nombre del encargado
+     */
     public Encargado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
     
+    
     //Métodos
+    //Métodos GET/SET heredados
+    
     @Override
+    /**
+     * Muestra la información del encargado
+     */
     public void mostrar(){
-        System.out.println("*** ENCARGADO: " + this.verNombre() + " " + this.verApellido()+" ***"); 
-        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave());
+        System.out.print("*** ENCARGADO: "); 
+        super.mostrar();
     }
     
 }

@@ -5,21 +5,40 @@
 package usuarios.modelos;
 
 /**
- *
- * @author estudiante
+ * Clase destinada a manejar los clientes del restaurante, que pueden ingresar y hacer pedidos de comida
+ * @author Ana Kuenneth
  */
 public class Cliente extends Usuario{
-    //Atributos heredados
+    /**
+     * Atributos heredados
+     * @param correo Correo electrónico del cliente para ingresar al sistema
+     * @param clave Contraseña del cliente para ingresar al sistema
+     * @param apellido Apellido del cliente
+     * @param nombre Nombre del cliente
+     */
     
-    //Constructor
+    /**
+     * Constructor
+     * Crea una instancia del tipo Cliente
+     * @param correo Correo electrónico del cliente
+     * @param clave Contraseña del cliente
+     * @param apellido Apellido del cliente
+     * @param nombre Nombre del cliente
+     */
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
     
-    //Metodos
+    
+    //Métodos
+    //Métodos GET/SET heredados
+    
     @Override
+    /**
+     * Muestra la información del cliente
+     */
     public void mostrar(){
-        System.out.println("*** CLIENTE: " + this.verNombre() + " " + this.verApellido()+" ***"); 
-        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave());
+        System.out.print("*** CLIENTE: "); 
+        super.mostrar();
     }
 }
