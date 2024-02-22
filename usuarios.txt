@@ -1,0 +1,4 @@
+ana@gmail.com,Kuenneth,Rosa,Cliente,123
+santiago@gmail.com,Martinez,Santiago,Cliente,321
+luis@gmail.com,Nieto,Luis,Encargado,555
+agustin@gmail.com,Pichi,Agustín,Cliente,444

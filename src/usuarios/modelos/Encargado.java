@@ -4,42 +4,63 @@
  */
 package usuarios.modelos;
 
+import java.util.List;
+import pedido.modelos.GestorPedidos;
+import pedido.modelos.Pedido;
+
 /**
- * Clase destinada a manejar los encargados del restaurante, que pueden ingresar y revisar los pedidos de comida
- * @author Ana Kuenneth
+ * Atributos y comportamientos de los objetos creados como encargados
+ * @author estudiante
  */
 public class Encargado extends Usuario{
-    /**
-     * Atributos heredados
-     * @param correo Correo electrónico del encargado para ingresar al sistema
-     * @param clave Contraseña del encargado para ingresar al sistema
-     * @param apellido Apellido del encargado
-     * @param nombre Nombre del encargado
-     */
-    
+    //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
+
     /**
      * Constructor
-     * Crea una instancia del tipo Encargado
+     * Instancia objetos del tipo Encargados
      * @param correo Correo electrónico del encargado
      * @param clave Contraseña del encargado
-     * @param apellido Apellido del encargado
-     * @param nombre Nombre del encargado
+     * @param apellido Apellido encargado
+     * @param nombre Nombre encargado
      */
-    public Encargado(String correo, String clave, String apellido, String nombre) {
-        super(correo, clave, apellido, nombre);
+    public Encargado(String correo, String apellido, String nombre, String clave) {
+        super(correo, apellido, nombre, clave);
     }
-    
-    
+
     //Métodos
     //Métodos GET/SET heredados
-    
-    @Override
+    //Método mostrar() heredado
+       
     /**
-     * Muestra la información del encargado
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su correos (correo electrónico del encargado)
+     * Email debe ser único para cada objeto del tipo Encargado
+     * @return hash
      */
-    public void mostrar(){
-        System.out.print("*** ENCARGADO: "); 
-        super.mostrar();
+    @Override
+    public int hashCode() {
+        return super.hashCode(); 
     }
     
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Encargado a partir de sus correos
+     * @param obj obj
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); 
+    }
+    
+    /**
+     * Método que devuelve todos los pedidos creados 
+     * Se utiliza el patrón Singleton
+     * @return pedidos
+     */
+    @Override
+    public List<Pedido> verPedidos() {
+        GestorPedidos gp = GestorPedidos.crear();
+        return gp.verPedidos();
+    }
 }

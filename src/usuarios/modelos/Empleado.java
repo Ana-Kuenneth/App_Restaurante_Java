@@ -4,38 +4,65 @@
  */
 package usuarios.modelos;
 
+import java.util.List;
+import pedido.modelos.GestorPedidos;
+import pedido.modelos.Pedido;
+
 /**
- * Clase destinada a manejar los empleados del restaurante, que pueden ingresar y revisar los pedidos de comida
- * @author Ana Kuenneth
+ * Atributos y comportamientos de los objetos creados como empleados
+ * @author estudiante
  */
-public class Empleado extends Usuario{
+public class Empleado extends Usuario {
+    //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
+
     /**
-     * Atributos heredados
-     * @param correo Correo electrónico del empleado para ingresar al sistema
-     * @param clave Contraseña del empleado para ingresar al sistema
-     * @param apellido Apellido del empleado
-     * @param nombre Nombre del empleado
-     */
-    
-    /**
-     * Constructor
-     * Crea una instancia del tipo Empleado
+     * Constructor Instancia objetos del tipo Empleados
+     *
      * @param correo Correo electrónico del empleado
      * @param clave Contraseña del empleado
      * @param apellido Apellido del empleado
      * @param nombre Nombre del empleado
      */
-    public Empleado(String correo, String clave, String apellido, String nombre) {
-        super(correo, clave, apellido, nombre);
+    public Empleado(String correo, String apellido, String nombre, String clave) {
+        super(correo, apellido, nombre, clave);
     }
-    
+
     //Métodos
-    @Override
+    //Métodos GET/SET heredados
+    //Método mostrar() heredado
     /**
-     * Muestra la información del empleado
+     * Método hashCode Establece y devuelve el código hash del objeto a partir
+     * de su correos (correo electrónico del Empleado) Email debe ser único para
+     * cada objeto del tipo Empleado
+     *
+     * @return hash
      */
-    public void mostrar(){
-        System.out.print("*** EMPLEADO: "); 
-        super.mostrar();
+    @Override
+    public int hashCode() {
+        return super.hashCode(); 
+    }
+
+    /**
+     * Método equals Compara dos objetos del tipo Empleado a partir de sus
+     * correos
+     *
+     * @param obj obj
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); 
+    }
+
+    /**
+     * Método que devuelve todos los pedidos creados Se utiliza el patrón
+     * Singleton
+     *
+     * @return pedidos
+     */
+    @Override
+    public List<Pedido> verPedidos() {
+        GestorPedidos gp = GestorPedidos.crear();
+        return gp.verPedidos();
     }
 }

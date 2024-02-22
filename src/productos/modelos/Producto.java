@@ -5,138 +5,177 @@
 package productos.modelos;
 
 /**
- * Clase destinada a manejar los productos del restaurante, sus estado y la venta de ellos.
+ * Atributos y comportamientos de los objetos creados como productos
  * @author Ana Kuenneth
  */
-public class Producto {
-    /**
-     * Atributos de la clase / Variables de instacia de la clase Producto
-     * @param codigo Código del tipo entero que identifica a cada uno de los productos.
-     * @param descripcion Brinda un breve detalle sobre cada producto.
-     * @param categoria Brinda especificidad sobre un producto. Agrupa ciertos productos.
-     * @param estado Muestra si un producto esta disponible o no.
-     * @param precio Valor numérico de tipo flotante del producto.
-    */
+public class Producto implements Comparable<Producto>{
+    //Atributos de la clase
+    private Estado estado;
     private int codigo;
     private String descripcion;
-    private String categoria;
-    private String estado;
     private float precio;
-    
+    private Categoria categoria;
     
     /**
      * Constructor
-     * Crea una instancia del tipo Producto
-     * @param codigo Código del producto
-     * @param descripcion Detalle sobre el producto
-     * @param categoria Grupo del producto
-     * @param estado Disponibilidad del producto
-     * @param precio Valor numérico para monetizar el producto
-    */
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+     * Instancia objetos del tipo Producto
+     * @param codigo Código
+     * @param descripcion Descripción del producto
+     * @param categoria Categoría
+     * @param estado Estado del producto
+     * @param precio Precio producto
+     */
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+        this.estado = estado;
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
         this.precio = precio;
+        this.categoria = categoria;
+    }
+
+    //Métodos
+    //Métodos GET/SET
+    /**
+     * Devuelve el estado
+     * @return estado
+     */
+    public Estado verEstado() {
+        return estado;
+    }
+    /**
+     * Asigna el estado al producto
+     * @param estado estado
+     */
+    public void asignarEstado(Estado estado) {
+        this.estado = estado;
     }
     
-    //Metodos GET/SET
     /**
-     * Metodo GET para ver el código del producto
-     * @return El código del producto
+     * Devuelve el código del producto
+     * @return codigo
      */
     public int verCodigo() {
         return codigo;
     }
     /**
-     * Método SET para asignar el código del producto
-     * @param codigo El código del producto
+     * Asigna el codigo a un producto
+     * @param codigo codigo
      */
     public void asignarCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     /**
-     * Metodo GET para ver la descripción del producto
-     * @return La descripción del producto
+     * Devuelve la descripcion del producto
+     * @return descripcion
      */
     public String verDescripcion() {
         return descripcion;
     }
     /**
-     * Metodo SET para asignar la descripción del producto
-     * @param descripcion La descripción del producto
+     *Asigna el precio al producto
+     * @param descripcion descripcion
      */
     public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
     /**
-     * Metodo GET para ver la categoría del producto
-     * @return La categoría del producto
-     */
-    public String verCategoria() {
-        return categoria;
-    }
-    /**
-     * Metodo SET para asignar la categoría del producto
-     * @param categoria La categoría del producto
-     */
-    public void asignarCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-    
-    /**
-     * Metodo GET para ver el estado del producto
-     * @return El estado del producto
-     */
-    public String verEstado() {
-        return estado;
-    }
-    /**
-     * Método SET para asignar el estado del producto
-     * @param estado El estado del producto
-     */
-    public void asignarEstado(String estado) {
-        this.estado = estado;
-    }
-    
-    /**
-     * Metodo GET para ver el precio del producto
-     * @return El precio del producto
+     * Decuelve el precio de un producto
+     * @return precio
      */
     public float verPrecio() {
         return precio;
     }
     /**
-     * Método SET para asignar el precio del producto
-     * @param precio El precio del producto
+     * Asigna el precio de un producto
+     * @param precio precio
      */
     public void asignarPrecio(float precio) {
         this.precio = precio;
     }
-    
-    
-    //Métodos
+ 
     /**
-     * Muestra la información del producto
+     * Devuelve la categoría de un producto
+     * @return categoria
+     */
+    public Categoria verCategoria() {
+        return categoria;
+    }
+    /**
+     * Asigna la categoría al producto
+     * @param categoria categoria
+     */
+    public void asignarCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    /**
+     * Muestra los atributos del producto creado.
      */
     public void mostrar(){
-        System.out.println("*** PRODUCTO: " + this.verCodigo() + " ***"); 
-        System.out.println("Descripcion: "+ this.verDescripcion());
-        System.out.println("Categoria: " + this.verCategoria());
-        System.out.println("Estado: " + this.verEstado());
-        System.out.println("Precio: $"+ this.verPrecio()+"\n");
+        System.out.println("Producto: " + this.verDescripcion());
+        System.out.println("Precio:" + this.verPrecio());
+        System.out.print("Categoria:" + this.verCategoria());
+        System.out.println(" Vigente:" + this.verEstado());
     }
-
+    
     /**
-     * Muestra el objeto como una sentencia de caracteres con toda la información del mismo
-     * @return El objeto como un String
+     * Muestra la instancia en forma de String
+     * @return Producto
      */
     @Override
     public String toString() {
-        return "PRODUCTO{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", categoria=" + categoria + ", estado=" + estado + ", precio=" + precio + '}';
+        return descripcion;
     }
-    
+
+    /**
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su código (código del producto)
+     * Código debe ser único para cada objeto del tipo Producto
+     * @return hash
+     */
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + this.codigo;
+        return hash;
+    }
+
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Producto a partir de sus códigos
+     * @param obj obj
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return this.codigo == other.codigo;
+    }
+
+    /**
+     * Compara las categorías y las descripciones de los productos por separado
+     * Envía el producto ordenado por categoría y luego por la descripción
+     * @param o Objeto del tipo producto a comparar
+     * @return Resultado de la comparación (-1, 0, 1)
+     */
+    @Override
+    public int compareTo(Producto o) {
+        if(o.categoria.compareTo(this.verCategoria()) == 0){
+            return o.descripcion.compareToIgnoreCase(this.verDescripcion())*(-1);
+        }
+        else{
+            return o.categoria.compareTo(this.verCategoria())*(-1);
+        }
+    }      
 }

@@ -4,106 +4,167 @@
  */
 package usuarios.modelos;
 
+import java.util.List;
+import java.util.Objects;
+import pedido.modelos.Pedido;
+
 /**
- * Clase destinada a manejar los usuarios del restaurante (Clientes, Encargados, Empleados), que pueden ingresar a la aplicación, hacer y revisar los pedidos de comida
- * @author Ana Kuenneth
+ * Atributos y comportamientos de los objetos creados como usuarios
+ * @author estudiante
  */
-public class Usuario {
-    /**
-     * Atributos de la clase / Variables de instacia de la clase Usuario
-     * @param correo Correo electrónico del usuario para poder ingresar a la aplicación.
-     * @param clave Clave o contraseña de acceso del usuario a la aplicación.
-     * @param apellido Apellido del usuario de la aplicación.
-     * @param nombre Nombre del usuario de la aplicación.
-    */
+public abstract class Usuario implements Comparable<Usuario>{
+    //Atributos / Variables de instancia
     private String correo;
-    private String clave;
     private String apellido;
     private String nombre;
+    private String clave;
 
     /**
      * Constructor
-     * Crea una instancia del tipo Usuario
+     * Instancia objetos del tipo Usuario
      * @param correo Correo electrónico del usuario
      * @param clave Contraseña del usuario
      * @param apellido Apellido del usuario
      * @param nombre Nombre del usuario
      */
-    public Usuario(String correo, String clave, String apellido, String nombre) {
+    public Usuario(String correo, String apellido, String nombre, String clave) {
         this.correo = correo;
-        this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
-    }
-    
-    //Metodos GET/SET
-    /**
-     * Metodo GET para ver el nombre del usuario
-     * @return El nombre del usuario
-     */
-    public String verNombre() {
-        return nombre;
-    }
-    /**
-     * Metodo SET para asignar el nombre del usuario
-     * @param nombre El nombre del usuario
-     */
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
+        this.clave = clave;
     }
 
+    //Métodos
+    //Métodos GET/SET
     /**
-     * Metodo GET para ver el correo electrónico del usuario
-     * @return El correo electrónico del usuario
+     * Devuelve el correo electrónico de un usuario
+     * @return correo
      */
     public String verCorreo() {
         return correo;
     }
     /**
-     * Metodo SET para asigar el correo electrónico del usuario
-     * @param correo El correo electrónico del usuario
+     * Asigna el correo electrónico de un usuario
+     * @param correo correo
      */
     public void asignarCorreo(String correo) {
         this.correo = correo;
     }
 
     /**
-     * Metodo GET para ver la clave del usuario
-     * @return La contraseña del usuario
+     * Devuelve la constraseña de un usuario
+     * @return clave
      */
     public String verClave() {
         return clave;
     }
     /**
-     * Metodo SET para asignar la clave del usuario
-     * @param clave La contraseña del usuario
+     * Asigna la contraseña de un usuario
+     * @param clave clave
      */
     public void asignarClave(String clave) {
         this.clave = clave;
     }
-    
+
     /**
-     * Metodo GET para ver el nombre del usuario
-     * @return El apellido del usuario
+     * Devuelve el apellido de un usuario
+     * @return apellido
      */
     public String verApellido() {
         return apellido;
     }
     /**
-     * Metodo SET para asignar el apellido del usuario
-     * @param apellido El apellido del usuario
+     * Asigna el apellido de un usuario
+     * @param apellido apellido
      */
     public void asignarApellido(String apellido) {
         this.apellido = apellido;
     }
-    
-    
-    //Métodos
+
     /**
-     * Muestra la información del usuario
+     * Devuelve el nombre de un usuario
+     * @return nombre
+     */
+    public String verNombre() {
+        return nombre;
+    }
+    /**
+     * Asigna el nombre de un usuario
+     * @param nombre nombre
+     */
+    public void asignarNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    /**
+     * Muestra los atributos del objeto Usuario creado
      */
     public void mostrar(){
-        System.out.println(this.verNombre() + " " + this.verApellido()+" ***");
-        System.out.println("Correo electronico: " + this.verCorreo()+". Clave: "+ this.verClave()+"\n");
+        System.out.println(this.verApellido()+ " " +this.verNombre());
+        System.out.println("Correo: " + this.verCorreo());
     }
+
+    /**
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su correos (correo electrónico del Usuario)
+     * Email debe ser único para cada objeto del tipo Usuario
+     * @return hash
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.correo);
+        return hash;
+    }
+
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Usuario a partir de sus correos
+     * @param obj obj
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass().getSuperclass() != obj.getClass().getSuperclass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        return Objects.equals(this.correo, other.correo);
+    }
+
+    @Override
+    /**
+     * 
+     */
+    public String toString() {
+        return "Usuario{" + "correo=" + this.verCorreo() + ", apellido=" + this.verApellido() + ", nombre=" + this.verNombre() + ", clave=" + this.verClave()  + '}' + "\n" ;
+    }
+    
+    
+    /**
+     * Método abstracto que permite ver un conjunto de pedidos
+     * @return Lista de pedidos que realizó el Usuario
+     */
+    public abstract List<Pedido> verPedidos();
+    
+    /**
+     * Método encargado del ordenamiento de los usuarios
+     * @param o Un usuario
+     * @return resultado de la comparacion de los usuarios para el ordenamiento
+     */
+    @Override
+    public int compareTo(Usuario o) {
+        if(o.apellido.compareTo(this.verApellido()) == 0){
+            return o.nombre.compareToIgnoreCase(this.verNombre())*(-1);
+        }
+        else{
+            return o.apellido.compareTo(this.verApellido())*(-1);
+        }
+    }   
 }
